@@ -1,0 +1,92 @@
+
+{% extends 'base.html'%}
+
+
+
+
+{% comment %} <style>
+
+
+    .seller-container {
+        background-color: #f2f2f2; /* Background color of the container */
+        padding: 20px; /* Padding around the content inside the container */
+        border: 1px solid #ddd; /* Border around the container */
+        border-radius: 5px; /* Rounded corners for the container */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect for the container */
+        text-align: center; /* Center-align the content inside the container */
+        max-width: 300px; /* Maximum width of the container */
+        margin: 0 auto; /* Center-align the container horizontally */
+    }
+</style> {% endcomment %}
+
+
+{% block body %}
+
+<style>
+
+
+    .seller-container {
+        background-color: #f2f2f2; /* Background color of the container */
+        padding: 20px; /* Padding around the content inside the container */
+        border: 1px solid #ddd; /* Border around the container */
+        border-radius: 5px; /* Rounded corners for the container */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect for the container */
+        text-align: center; /* Center-align the content inside the container */
+        max-width: 1000px; /* Maximum width of the container */
+        margin: 0 auto; /* Center-align the container horizontally */
+    }
+
+    /* CSS for the img-container */
+    .img-container {
+        border: 1px solid #ccc;
+        padding: 10px;
+        max-width: 1000px; /* Adjust the maximum width of the container */
+        text-align: center;
+        margin: 0 auto;
+    }
+    
+    /* Style for the <u> elements */
+    .img-container h5 u {
+        text-decoration: underline;
+    }
+    
+    /* CSS for the image boxes */
+    .image-box {
+        max-width: 100%; /* Ensure images don't exceed the width of their container */
+        text-align: center; /* Center-align the images */
+        overflow: hidden; /* Hide any image overflow */
+    }
+    
+
+    
+</style>
+
+
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<div class="seller-container">
+
+     <div class="img-container">
+        <h5><u>Seller Image</u></h5>
+        <div class="image-box">
+            <img src="{{ seller.photo.url }}" alt="Seller Image">
+        </div>
+    </div>
+
+     <h5>First Name: {{ seller.first_name }}</h5>
+    <h5> Last Name: {{ seller.last_name }}</h5>
+    <h5> Address: {{ seller.address}}</h5>
+        <h5>DOB: {{ seller.dob}}</h5>
+     <h5>Gender: {{ seller.gender}}</h5><br>
+    
+
+    </div>
+
+{% endblock body%}

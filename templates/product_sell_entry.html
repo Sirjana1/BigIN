@@ -1,0 +1,132 @@
+
+{% extends 'base.html'%}
+{% block body %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+
+    .container {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="file"],
+    select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    input[type="file"] {
+        padding: 5px;
+    }
+
+
+    .form-group input[type="submit"]:hover {
+        background-color: #730FF3;
+      }
+
+    button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Sell Your Product</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" pattern="[A-Za-z][A-Za-z\s]*" required>
+        </div>
+        <div class="form-group">
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" pattern="[A-Za-z][A-Za-z\s]*" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="photo">Photo:</label>
+            <input type="file" id="photo" name="photo" accept="image/*" required>
+        </div>
+        <div class="form-group">
+            <label for="citizenship">Citizenship:</label>
+            <select id="citizenship" name="citizenship" required>
+                <option value="us">Nepal</option>
+                <option value="ca">Canada</option>
+                <option value="uk">United Kingdom</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="product_name">Product Name:</label>
+            <input type="text" id="product_name" name="product_name" pattern="[A-Za-z][A-Za-z\s]*" required>
+        </div>
+        <div class="form-group">
+            <label for="product_image">Product Image:</label>
+            <input type="file" id="product_image" name="product_image" accept="image/*" required>
+        </div>
+        <div class="form-group">
+        <label for="category">Category:</label>
+        <select id="category" name="category" required>
+            <option value="" disabled selected>Select a category</option>
+            {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+        </select>
+        </div>
+        <div class="form-group">
+            <label for="product_description">Product Description:</label>
+            <input type="text" id="product_description" name="product_description" required>
+        </div>
+        <div class="form-group">
+            <label for="offered_price">Offered Price:</label>
+            <input type="text" id="offered_price" name="offered_price" required>
+        </div>
+        <div class="form-group">
+            <button type="submit">Submit Request</button>
+        </div>
+    </form>
+</div>
+</body>
+    
+{% endblock body %}

@@ -1,0 +1,514 @@
+
+{% extends 'base.html' %}
+
+
+{% block title  %}Home {%  endblock title %}
+{% block body %}
+<style>
+  /* Product Card Styles */
+  .container5 {
+    background-color: #fff;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+  
+  .container5:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card {
+    padding: 10px;
+  }
+  
+  .card img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .card-text {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .rating {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .rating input[type="radio"] {
+    display: none;
+  }
+  
+  .rating label {
+    font-size: 20px;
+    color: #f0ad4e; /* Change color based on rating */
+    cursor: pointer;
+  }
+  
+  .seller-profile a {
+    text-decoration: none;
+    color: #007bff; /* Blue color for seller link */
+  }
+  
+  .delivery-date select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .payment-options a {
+    text-decoration: none;
+    color: #28a745; /* Green color for payment link */
+  }
+  
+  /* Media Query for Responsive Design */
+  @media (max-width: 768px) {
+    .container5 {
+      margin: 10px;
+    }
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .custom-container {
+      max-width: 4000px; /* Customize the max-width */
+      max-height: 600px;
+      background-color:white; /* Customize the background color */
+      padding: 50px; /* Customize the padding */
+    }
+    .custom-container .carousel-inner {
+      transition-duration: 0.2s;
+    }
+     
+    .product h2{
+      color:white
+     
+    }
+    .product-list .product p {
+      font-size: 14px;
+      color:white;
+    }
+
+    .product-list .product .rating{
+      padding: 10px
+    }
+   
+    .product-list .product .product-image {
+      margin-bottom: 10px; /* Add margin bottom to create space after the image */
+    }
+
+    .product-list .product  a{
+      font-size: 14px
+    }
+    
+
+
+    .custom-container1 {
+        max-width: 1800px; /* Customize the max-width */
+        max-height: 600px;
+        background-color:#30518E; /* Customize the background color */
+        padding: 10px; /* Customize the padding */
+      }
+     
+     
+      .custom-container2 {
+        max-width: 4000px; /* Customize the max-width */
+        max-height: 600px;
+        background-color:#799E83; /* Customize the background color */
+        padding: 50px; /* Customize the padding */
+      }
+      .custom-container3 {
+        max-width: 4000px; /* Customize the max-width */
+        max-height: 600px;
+        background-color:#30518E; /* Customize the background color */
+        padding: 50px; /* Customize the padding */
+      }
+    .carousel-item {
+        width: 1500px; /* Set the desired width */
+        height: 550px; /* Set the desired height */
+        object-fit: center; /* Maintain aspect ratio and cover the entire container */
+      }
+
+      .text-overlay{
+        height:300px;
+        color: #E9F40A;
+        animation: rotateText 15s linear infinite;
+      }
+      @keyframes rotateText {
+        0% {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        100% {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+      .text-overlay p{
+        font-size: 25px;
+        color:white
+      }        
+    
+      .container5{
+        background-color: white;
+        margin: 50px 50px
+      }
+
+      .container5 .col .card shadow-sm{
+        margin: 10px 10px;
+      }
+      .container5 h2{
+        text-align:center;
+      }
+
+      @keyframes moveRight {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+      
+      #products-heading {
+        animation: moveRight 1s ease-in-out forwards;
+      }
+      
+      .carousel-item {
+        width: 2500px; /* Set the desired width */
+        height: 550px; /* Set the desired height */
+        object-fit: center; /* Maintain aspect ratio and cover the entire container */
+      }
+    
+      
+    </style>
+<!--carausal container-->
+ <div class="container custom-container" >
+  <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="/static/css/image/py.jpg" class="d-block w-100" alt="..." >
+          <div class="carousel-caption d-flex align-items-center justify-content-center">
+            <div class="text-overlay">
+              <h3>{{category}}</h3>
+              <p>Your Choice is Here</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="/static/css/image/c.jpg" class="d-block w-100" alt="..." >
+          <div class="carousel-caption d-flex align-items-center justify-content-center">
+            <div class="text-overlay">
+              <h3>{{category}}</h3>
+              <p>Your Choice is Here</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="/static/css/image/c.jpg" class="d-block w-100" alt="..." >
+          <div class="carousel-caption d-flex align-items-center justify-content-center">
+            <div class="text-overlay">
+              <h3>{{category}}s</h3> <p>Your Choice is Here</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  <h2 id="products-heading" class="text-center">Products Here</h2>
+
+  {#}<h1>Products</h1> #}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% comment %} {% if category %}
+<h2>Category: {{ category }}</h2>
+    {#im here#}
+{% endif %} {% endcomment %}
+<ul>
+  <div class="row">
+    {% for product in products %}
+        <!-- Product listings here -->
+        <div class="col-md-4">
+            <div class="container5 my-3">
+               <!-- <h2 id="products-heading">Products Here</h2>-->
+                <div class="card shadow-sm">
+                    <img src="{{ product.product_image.url }}" class="d-block w-25" alt="...">
+                    <div class="card-body">
+                        <!-- Product details here -->
+                        <p class="card-text">{{ product.product_name }}</p>
+                        <div class="rating">
+                            <!-- Add your rating input elements here -->
+                        </div>
+                        <p class="card-text">Price: {{ product.offered_price }}</p>
+                        <p class="seller-profile">Seller: <a href="{% url 'seller_profile' product.seller_profile.id %}">{{ product.first_name }} {{ product.last_name }}</a></p>
+                        <p class="delivery-date">Select Delivery Day:
+                            <select>
+                                <option value="1">1 day</option>
+                                <option value="3">3 days</option>
+                                <option value="7">7 days</option>
+                            </select>
+                        </p>
+                          <form action="{% url 'initiate' %}" method="POST">
+                            {%csrf_token%}
+                            <input type="hidden" name="purchase_order_id" value="{{product.id}}"  id="pid">
+                            <input type="hidden" name="amount" value="{{ product.offered_price }}" id="amt">
+                            <input type="submit" value="Pay With Khalti" name="" id="">
+                            <input type="hidden" name="return_url" value="http://127.0.0.1:8000/verify">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+    
+
+<!--Album-->
+
+
+
+   {%endblock body %}
+
+
+{% comment %} {% extends 'base.html' %}
+
+
+{% block title  %}Products {%  endblock title %}
+{% block body %}
+<style>
+
+
+
+    .custom-container {
+      max-width: 4000px; /* Customize the max-width */
+      max-height: 600px;
+      background-color:white; /* Customize the background color */
+      padding: 50px; /* Customize the padding */
+    }
+    .custom-container .carousel-inner {
+      transition-duration: 0.2s;
+    }
+     
+    .product h2{
+      color:white
+     
+    }
+    .product-list .product p {
+      font-size: 14px;
+      color:white;
+    }
+
+    .product-list .product .rating{
+      padding: 10px
+    }
+   
+    .product-list .product .product-image {
+      margin-bottom: 10px; /* Add margin bottom to create space after the image */
+    }
+
+    .product-list .product  a{
+      font-size: 14px
+    }
+    
+
+
+    .custom-container1 {
+        max-width: 1800px; /* Customize the max-width */
+        max-height: 600px;
+        background-color:#30518E; /* Customize the background color */
+        padding: 10px; /* Customize the padding */
+      }
+     
+     
+      .custom-container2 {
+        max-width: 4000px; /* Customize the max-width */
+        max-height: 600px;
+        background-color:#799E83; /* Customize the background color */
+        padding: 50px; /* Customize the padding */
+      }
+      .custom-container3 {
+        max-width: 4000px; /* Customize the max-width */
+        max-height: 600px;
+        background-color:#30518E; /* Customize the background color */
+        padding: 50px; /* Customize the padding */
+      }
+    .carousel-item {
+        width: 1500px; /* Set the desired width */
+        height: 550px; /* Set the desired height */
+        object-fit: center; /* Maintain aspect ratio and cover the entire container */
+      }
+
+      .text-overlay{
+        height:300px;
+        color: #E9F40A;
+        animation: rotateText 15s linear infinite;
+      }
+      @keyframes rotateText {
+        0% {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        100% {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+      .text-overlay p{
+        font-size: 25px;
+        color:white
+      }        
+    
+      .container5{
+        background-color: white;
+        margin: 50px 50px
+      }
+
+      .container5 .col .card shadow-sm{
+        margin: 10px 10px;
+      }
+      .container5 h2{
+        text-align:center;
+      }
+
+      @keyframes moveRight {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+      
+      #products-heading {
+        animation: moveRight 3s ease-in-out forwards;
+      }
+
+      
+  
+      .carousel-inner {
+        width: 100%;
+        height: 0;
+        padding-top: 56.25%; /* 16:9 aspect ratio (9 / 16 * 100%) */
+        position: relative;
+      }
+    
+      /* Style to ensure images fill the container */
+      .carousel-inner img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+      }
+    </style>
+    
+    <h1>Products</h1>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% if category %}
+<h2>Category: {{ category }}</h2>
+    {#im here#}
+{% endif %}
+<ul>
+    {% for product in products %}
+    <li>{{ product.first_name }}</li>
+    <div class="container5 my-3">
+      <h2 id="products-heading">Products Here</h2>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+    <div class="col">
+      <div class="card shadow-sm">
+        <img src="{{ product.product_image.url }}" class="d-block w-25" alt="..." >
+          <div class="card-body">
+          <p class="card-text">{{ product.product_name }}</p>
+          <div class="rating">
+            <input type="radio" id="rating2-1" name="rating2" value="1">
+            <label for="rating2-1"></label>
+            <input type="radio" id="rating2-2" name="rating2" value="2">
+            <label for="rating2-2"></label>
+            <input type="radio" id="rating2-3" name="rating2" value="3">
+            <label for="rating2-3"></label>
+            <input type="radio" id="rating2-4" name="rating2" value="4">
+            <label for="rating2-4"></label>
+            <input type="radio" id="rating2-5" name="rating2" value="5">
+            <label for="rating2-5"></label>
+          </div>
+          <p class="card-text">Price: {{ product.offered_price }}</p>
+          <p class="seller-profile">Seller: <a href="/sellerprofile">{{ product.first_name }} {{ product.last_name }}</a></p>
+          <p class="delivery-date">Select Delievery Day:
+            <select>
+              <option value="1">1 day</option>
+              <option value="3">3 days</option>
+              <option value="7">7 days</option>
+            </select>
+          </p>
+          <ul class="payment-options">
+            <a href="/">Make Payement</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+</ul>
+
+</div>
+  </div>
+</div>
+   {%endblock body %} {% endcomment %}

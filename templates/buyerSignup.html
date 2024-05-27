@@ -1,0 +1,114 @@
+{% extends 'base.html'%}
+{% block body %}
+  <title>Signup Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color:white;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 100px;
+    }
+
+    .signup-form {
+      max-width: 1200px;
+      margin: 20px 10px;
+      padding: 50px;
+      border: 1px solid #ccc;
+      background:gray;
+      border-radius: 5px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .form-group input[type="submit"] {
+      background-color:teal;
+      color: white;
+      cursor: pointer;
+    }
+  
+
+    .form-group input[type="submit"]:hover {
+      background-color: #730FF3;
+    }
+
+    .login-container {
+      text-align: center;
+    
+    }
+
+    .login-link {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color:teal;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    .login-link:hover {
+      background-color: #45a049;
+    }
+    .center-text p{
+       padding:15px 20px;
+    }
+  </style>
+ <div class="Box">
+  <div class="container">
+    <div class="signup-form">
+      <h2>Signup as Buyer</h2>
+      <form  method="post">
+          {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" pattern="[A-Za-z][A-Za-z\s]*" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" required>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Sign Up">
+        </div>
+        <div class="login-container">
+          <a href="{% url 'login' %}" class="login-link">Login</a>
+        </div>
+      </form>
+    </div>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,133 @@
+{% extends 'base.html'%}
+<head>
+  <title>Feedback Hub</title>
+  {% block body%}
+  <style>
+    body  {
+      font-family: Arial, sans-serif;
+      background-color:white;
+   }
+    .container{
+      background-color:white;
+      background-size:100px;
+      width: 900px;
+      height:900px
+    }
+    .feedback-form {
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .feedback-form h2 {
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .form-group input[type="submit"] {
+      background-color: teal;
+      color: white;
+      cursor: pointer;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .form-group input[type="submit"]:hover {
+      background-color:#730FF3;
+    }
+    .container1 {
+      background-color: #f2f2f2;
+      padding: 20px;
+      width: 30px; /* Set the desired width */
+      height:30px;
+      margin: 0 auto; /* Center the container horizontally */
+      box-sizing: border-box;
+    }
+    
+    .leave-comment {
+   background-color:#730FF3;
+      border: 5px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+      animation: blink 3s infinite;
+    }
+    
+    .leave-comment h2 {
+      text-align:center;
+      color:white;
+      margin: 0;
+    }
+
+    @keyframes blink {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+ <div clsss="container1">
+    <div class="leave-comment">
+      <h2>Leave Here your comment and Empty your mind </h2>
+    </div>
+</div>
+  <div class="container">
+  <div class="feedback-form"   style="background-color:azure">
+    
+    <h2>Feedback Hub</h2>
+    <form method="post">
+        {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" pattern="[A-Za-z][A-Za-z\s]*" required>
+
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="comment">Comment:</label>
+        <textarea id="comment" name="comment" rows="5" required></textarea>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock body %}

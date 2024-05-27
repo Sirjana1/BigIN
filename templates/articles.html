@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block title  %}Home {%  endblock title %}
+{% block body %}
+<style>
+    
+
+
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+.author {
+    font-style: italic;
+}
+
+/* Styling for the article content */
+article {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.article-text {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+
+</style>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% if article_list.count < 1 %}
+    <h1 style="text-align: center; font-size: 50px; color: Red;">There is not any Article
+    {% else %}
+
+    {% for article in article_list %}
+    <article>
+    <h1>{{ article.title }}</h1>
+    <p class="author">{{ article.author }}</p>
+    <img src="{{ article.cover_img.url }}" alt="Article Image">
+    <p class="article-text">
+        {{ article.content }}
+
+
+
+
+
+    </article>
+    {% endfor %}
+    {% endif %}
+
+{%endblock body%}

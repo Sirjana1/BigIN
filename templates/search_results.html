@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+
+{% block title  %}Search Result {%  endblock title %}
+{% block body %}
+<h1>Search Results for "{{ query }}"</h1>
+
+    {% if results %}
+        {% if request.user.is_authenticated %}
+    {% for product in results %}
+        <!-- Product listings here -->
+        <div class="col-md-4">
+            <div class="container5 my-3">
+               <!-- <h2 id="products-heading">Products Here</h2>-->
+                <div class="card shadow-sm">
+                    <img src="{{ product.product_image.url }}" class="d-block w-25" alt="...">
+                    <div class="card-body">
+                        <!-- Product details here -->
+                        <p class="card-text">{{ product.product_name }}</p>
+                        <div class="rating">
+                            <!-- Add your rating input elements here -->
+                        </div>
+                        <p class="card-text">Price: {{ product.offered_price }}</p>
+                        <p class="seller-profile">Seller: <a href=" {% url 'seller_profile' product.seller_profile.id %}">{{ product.first_name }} {{ product.last_name }}</a></p>
+                        <p class="delivery-date">Select Delivery Day:
+                            <label>
+                                <select>
+                                    <option value="1">1 day</option>
+                                    <option value="3">3 days</option>
+                                    <option value="7">7 days</option>
+                                </select>
+                            </label>
+                        </p>
+                        <ul class="payment-options">
+                            <a href="/">Make Payment</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+         {% else %}
+         {% for product in results %}
+    <div class="col">
+      <div class="card shadow-sm">
+        <img src="{{ product.product_image.url }}" class="d-block w-50" alt="..." >
+        <div class="card-body">
+          <p class="card-text">{{product.product_name}}</p>
+          <p class="card-text">Price: {{ product.offered_price }}</p>
+          <a href="{% url 'buyer_registration' %}">Buy</a>
+
+        </div>
+      </div>
+    </div>
+         {% endfor %}
+    {% endif %}
+  {% else %}
+    <p>No results found.</p>
+  {% endif %}
+
+{%endblock body %}

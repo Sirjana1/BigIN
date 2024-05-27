@@ -1,0 +1,68 @@
+ {% extends 'base.html' %}
+
+{% block body %}
+
+<style>
+    .video-container {
+      display: flex;
+      justify-content: space-between;
+      margin: 60px 0;
+    }
+  
+    .video-container iframe {
+      flex: 1;
+      margin-right: 20px; /* Adjust the margin as needed */
+      margin-left: 20px
+    }
+
+
+  .videooo-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px; /* Adjust the gap between videos */
+  }
+
+  .video-item {
+      flex: 0 0 calc(33.33% - 20px); /* Adjust the width of each video item */
+  }
+</style>
+
+
+<h1>Video Gallery</h1>
+
+<div class="videooo-container">
+{% for video in v %}
+  <div class="video-item">
+      <h2>{{ video.title }}</h2>
+      <video width="100%" height="auto" controls>
+          <source src="{{ video.video_id.url }}" type="video/mp4">
+          Your browser does not support the video tag.
+      </video>
+  </div>
+{% endfor %}
+</div>
+
+
+
+
+<div class="video-container">
+    <!-- Replace 'YOUR_YOUTUBE_VIDEO_ID' with the actual video ID -->
+    <iframe width="320" height="320" src="https://www.youtube.com/embed/dGF1x14QNGA" frameborder="0" allowfullscreen></iframe>
+
+    <!-- Replace 'YOUR_YOUTUBE_VIDEO_ID' with the actual video ID -->
+    <iframe width="320" height="320" src="https://www.youtube.com/embed/m62vHZrgufk" frameborder="0" allowfullscreen></iframe>
+
+    <!-- Replace 'YOUR_YOUTUBE_VIDEO_ID' with the actual video ID -->
+    <iframe width="320" height="320" src="https://www.youtube.com/embed/GmQ-k35Qgj8" frameborder="0" allowfullscreen></iframe>
+</div>
+<div class="video-container">
+    <!-- Replace 'YOUR_YOUTUBE_VIDEO_ID' with the actual video ID -->
+    <iframe width="320" height="320" src="https://www.youtube.com/embed/87Ipx-2fCuM" frameborder="0" allowfullscreen></iframe>
+
+    <!-- Replace 'YOUR_YOUTUBE_VIDEO_ID' with the actual video ID -->
+    <iframe width="320" height="320" src="https://www.youtube.com/embed/qxx9fveG7ek" frameborder="0" allowfullscreen></iframe>
+
+    <!-- Replace 'YOUR_YOUTUBE_VIDEO_ID' with the actual video ID -->
+    <iframe width="320" height="320" src="https://www.youtube.com/embed/biW3JOD73pk" frameborder="0" allowfullscreen></iframe>
+</div>
+{% endblock %}

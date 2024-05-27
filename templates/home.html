@@ -1,0 +1,317 @@
+{% extends 'base.html' %}
+
+
+{% block title  %}Home {%  endblock title %}
+{% block body %}
+
+<style>
+
+
+
+     .custom-container {
+      max-width: 4000px; /* Customize the max-width */
+      max-height: 600px;
+      background-color:white; /* Customize the background color */
+      padding: 50px; /* Customize the padding */
+    } 
+    .custom-container .carousel-inner {
+      transition-duration: 0.2s;
+    }
+     
+    {% comment %} .product h2{
+      color:white
+     
+    } {% endcomment %}
+
+    
+
+
+    {% comment %} .product-list .product p {
+      font-size: 14px;
+      color:white;
+    }
+
+    .product-list .product .rating{
+      padding: 10px
+    }
+   
+    .product-list .product .product-image {
+      margin-bottom: 10px; /* Add margin bottom to create space after the image */
+    }
+
+    .product-list .product  a{
+      font-size: 14px
+    }
+     {% endcomment %}
+     .custom-text {
+      color: blue; /* Change this to the desired color */
+    }
+
+    .custom-container1 {
+        max-width: 4000px; /* Customize the max-width */
+        max-height: 600px;
+        background-color:#30518E; /* Customize the background color */
+        padding: 50px; /* Customize the padding */
+      } 
+     
+     
+      .custom-container2 {
+        max-width: 4000px; /* Customize the max-width */
+        max-height: 600px;
+        background-color:#799E83; /* Customize the background color */
+        padding: 50px; /* Customize the padding */
+      }
+      .custom-container3 {
+        max-width: 400px; /* Customize the max-width */
+        max-height: 200px;
+        background-color:#30518E; /* Customize the background color */
+        padding: 10px; /* Customize the padding */
+      } 
+    .carousel-item {
+        width: 2500px; /* Set the desired width */
+        height: 550px; /* Set the desired height */
+        object-fit: center; /* Maintain aspect ratio and cover the entire container */
+      }
+
+      .text-overlay{
+        height:300px;
+        color: #E9F40A;
+        animation: rotateText 15s linear infinite;
+      }
+      @keyframes rotateText {
+        0% {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        100% {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+      .text-overlay p{
+        font-size: 25px;
+        color:white
+      }        
+    
+      .container5{
+        background-color: white;
+        margin: 50px 50px
+      }
+
+      .container5 .col .card shadow-sm{
+        margin: 10px 10px;
+      }
+      .container5 h2{
+        text-align:center;
+      }
+
+      @keyframes moveRight {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+      
+      #products-heading {
+        animation: moveRight 3s ease-in-out forwards;
+      }
+      
+    
+      
+    </style>
+<!--carausal container-->
+
+<div class="container custom-container" >
+<div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+      <img src="/static/css/image/py.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-flex align-items-center justify-content-center">
+          <div class="text-overlay">
+            <h1>BigIN</h1>
+            <p>enjoy with local products</p>
+       
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="/static/css/image/ghogi.JPG" class="d-block w-100 h-52" alt="...">
+        <div class="carousel-caption d-flex align-items-center justify-content-center">
+          <div class="text-overlay">
+            <h1>BigIN</h1>
+            <p>enjoy with local products</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="/static/css/image/dh.jpg" class="d-block w-100 h-52" alt="..." >
+        <div class="carousel-caption d-flex align-items-center justify-content-center">
+          <div class="text-overlay">
+            <h1>BigIN</h1>
+            <p>enjoy with local products</p>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+
+<!--Album-->
+
+<div class="container5 my-3">
+  <h2 id="products-heading">Products Here</h2>
+
+
+
+  
+    
+   
+{% comment "" %}
+     <div class="col">
+      <div class="card shadow-sm">
+        <img src="/static/css/image/hansuliNecklace.jpg" class="d-block w-50" alt="..." >
+                <div class="card-body">
+          <p class="card-text">Tharu Jewellery</p>
+          <p class="card-text">Price:</p>
+          <a href="{% url 'buyer_registration' %}">Buy</a>
+         
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card shadow-sm">
+        <img src="/static/css/image/dh.jpg" class="d-block w-50" alt="..." >
+        <div class="card-body">
+          <p class="card-text">Dhikri</p>
+          <p class="card-text">Price:</p>
+          <a href="{% url 'buyer_registration' %}">Buy</a>
+          
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col">
+      <div class="card shadow-sm">
+        <img src="/static/css/image/dhakki.jpg" class="d-block w-50" alt="..." >
+                <div class="card-body">
+          <p class="card-text">Dhakki</p>
+          <p class="card-text">Price:</p>
+          <a href="{% url 'buyer_registration' %}">Buy</a>
+        
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card shadow-sm">
+        <img src="/static/css/image/nuiyaa.jpeg" class="d-block w-50" alt="..." >
+                <div class="card-body">
+          <p class="card-text">Nuiyaa</p>
+          <p class="card-text">Price:</p>
+          <a href="{% url 'buyer_registration' %}">Buy</a>
+      
+        </div>
+      </div>
+    </div>
+     <div class="col">
+      <div class="card shadow-sm">
+        <img src="/static/css/image/thekuwa.jpg" class="d-block w-50" alt="..." >
+                <div class="card-body">
+          <p class="card-text">Thekuwa</p>
+          <p class="card-text">Price:</p>
+          <a href="{% url 'buyer_registration' %}">Buy</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col ">
+      <div class="card shadow-sm">
+        <img src="/static/css/image/sukuti.jpg" class="d-block w-50 h-50" alt="..." >
+        <div class="card-body">
+          <p class="card-text">Sukuti</p>
+          <p class="card-text">Price:</p>
+          <a href="/buyerSignup">Buy</a>
+          
+        </div>
+      </div>
+    </div>
+    {% endcomment %}
+    
+
+   
+   
+    
+  
+
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+ {% if product_list.count < 1 %}
+    <h1 style="text-align: center; font-size: 50px; color: Red;">There is not any Product
+    {% else %}
+     {% if request.user.is_authenticated %}
+    {% for product in product_list %}
+        <!-- Product listings here -->
+        <div class="col-md-4">
+            <div class="container5 my-3">
+               <!-- <h2 id="products-heading">Products Here</h2>-->
+                <div class="card shadow-sm">
+                    <img src="{{ product.product_image.url }}" class="d-block w-25" alt="...">
+                    <div class="card-body">
+                        <!-- Product details here -->
+                        <p class="card-text">{{ product.product_name }}</p>
+                        <div class="rating">
+                            <!-- Add your rating input elements here -->
+                        </div>
+                        <p class="card-text">Price: {{ product.offered_price }}</p>
+                        <p class="seller-profile">Seller: <a href=" {% url 'seller_profile' product.seller_profile.id %}">{{ product.first_name }} {{ product.last_name }}</a></p>
+                        <p class="delivery-date">Select Delivery Day:
+                            <select>
+                                <option value="1">1 day</option>
+                                <option value="3">3 days</option>
+                                <option value="7">7 days</option>
+                            </select>
+                        </p>
+
+                          <form action="{% url 'initiate' %}" method="POST">
+                            {%csrf_token%}
+                            <input type="hidden" name="purchase_order_id" value="{{product.id}}"  id="pid">
+                            <input type="hidden" name="amount" value="{{ product.offered_price }}" id="amt">
+                            <input type="submit" value="Pay With Khalti" name="" id="">
+                            <input type="hidden" name="return_url" value="http://127.0.0.1:8000/verify">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+         {% else %}
+         {% for product in product_list %}
+    <div class="col">
+      <div class="card shadow-sm">
+        <img src="{{ product.product_image.url }}" class="d-block w-50" alt="..." >
+        <div class="card-body">
+           <h6 class="card-text custom-text">{{ product.product_name }}</h6>
+           <h6 class="card-text custom-text">Price: {{ product.offered_price }}</h6>
+
+          <a href="{% url 'buyer_registration' %}"><h6>Buy</h6></a>
+
+        </div>
+      </div>
+    </div>
+         {% endfor %}
+    {% endif %}
+    {% endif %}
+  </div>
+   {%endblock body %}

@@ -1,0 +1,254 @@
+
+
+{% comment %} id 9800000002  pass 1111 otp c {% endcomment %}
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>{% block title  %} {%  endblock title %}BgiIN</title>
+    <!--Products Styles-->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color:teal;
+    }
+    .scroll-container{
+      background-color: #f5f5f5;
+      height: 400px;
+      overflow-y: scroll;
+      transition: background-color 0.3s ease;
+    }
+    .scroll-container.scrolled {
+      background-color: #eaeaea; 
+    }
+
+
+   
+  </style>
+
+    
+  
+  <!--NAV bar  styles-->
+    <style>
+    
+    nav{
+      background-color:#40E0D0 ;
+      height: 40px;
+      width: 0 px;
+    }
+
+    
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    nav ul li {
+      display: inline-block;
+      inline-height:30px;
+      margin: 0 5px;
+    }
+    
+    nav ul li a {
+      color:white;
+      font-size: 15px;
+      display: block;
+      padding: 3px;
+      text-decoration: none;
+      border radius: 0px;
+      
+    }
+    
+    nav ul li a:hover{
+      display:block;
+      background:#6495ED;
+
+
+    }
+    nav ul li:hover  .dropdown-menu {
+      display: block;
+    }
+    
+  
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    }
+    
+    .dropdown-menu li {
+      display: block;
+    }
+    
+    .dropdown-menu li a {
+      padding: 10px;
+      text-decoration: none;
+      color: #333;
+    }
+    
+    
+    .dropdown-menu li:hover {
+      background-color: #f1f1f1;
+    }
+
+  </style>
+
+
+    <!--Search Style-->
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color:teal;
+      }
+  
+      .search-form {
+        width: 0px;
+        height:30px;
+      
+      }
+  
+      .search-input {
+        padding: 0px;
+        background-color:black;
+      }
+  
+      .footer-design{
+        background-color:#ADADC9;
+        padding: 0px;
+        margin:0px;
+        width: 100%;
+        height:3%;
+      
+      }
+      {% comment %} .footer p{
+        font-size:40px;
+        background-color:red;
+      } {% endcomment %}
+      .center-text{
+        text-align:center;
+    
+      }
+
+    </style>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiarydark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home_page' %}">BigIN</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'home_page' %}">Home</a>
+            </li>
+            
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Products
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                {% for category in categories %}
+                    <li><a class="dropdown-item" href="{% url 'category_products' category.id %}">{{ category.name }}</a></li>
+                {% endfor %}
+            </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'feedback_hub' %}">Feedback Hub</a>
+            </li>
+          {% if not user.is_authenticated %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Register
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'buyer_registration' %}">Buyer</a></li>
+                <li><a class="dropdown-item" href="{% url 'seller_registration' %}">Seller/Producer</a></li>
+                <li><a class="dropdown-item" href="{% url 'admin:index' %}">Administrator</a></li>
+
+                <li><hr class="dropdown-divider"></li>
+              </ul>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Login</a>
+              </li>
+          {% endif %}
+
+              </li>
+                <a class="nav-link active" aria-current="page" href="{% url 'chat' %}">Chat</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'articles' %}">Articles</a>
+              </li>
+                <a class="nav-link active" aria-current="page" href="{% url 'videos' %}">Videos</a>
+                
+              </li>
+          {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Logout</a>
+              </li>
+        {% endif %}
+          {% if user.is_authenticated and user.user_type == "seller" %}
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'product_sell_entry' %}">Product Entry</a>
+              </li>
+        {% endif %}
+
+
+          </ul>
+
+
+         
+          <form class="d-flex" role="search" method="GET" action="{% url 'search_view' %}">
+            {% csrf_token %}
+            <input class="form-control" type="search" name="search_query" placeholder="Search" aria-label="Search"  id = "query">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+          
+        </div>
+      </div>
+    </nav>
+
+   {% block body%}
+
+
+   
+
+  {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{%endblock body%}
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-TwQE5G/L6P5F5s3tF1fAFiVv6/E2HbTpTOUEl3I5Gu37FKvc4F0BMaVqE5s5cUsd4" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  
+
+
+  
+
+    <div class="footer-design  fixed-bottom">
+      
+    <footer>
+      <p class="center-text">@BigIN    Contact Us:bigin@gmail.com Telephone:015-9876408 </p>
+        
+    </footer> 
+      
+  </div>
+</body>
+</html>
+ 
